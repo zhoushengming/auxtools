@@ -22,6 +22,10 @@ public class Logger {
         V, D, I, W, E
     }
 
+    private Logger(){
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
     public static void setPreTag(String preTag) {
         Logger.preTag = preTag;
     }
