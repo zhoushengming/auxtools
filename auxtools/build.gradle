@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release' //添加
 
 android {
     compileSdkVersion 26
@@ -30,3 +31,39 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+//添加
+publish {
+    userOrg = 'zhoushengming'//bintray.com用户名
+    groupId = 'com.ericcode'//jcenter上的路径
+    artifactId = 'auxtools'//项目名称
+    publishVersion = '1.0.0'//版本号
+    desc = 'Oh hi, this is a nice description for a project, right?'//描述，不重要
+    website = 'https://github.com/zhoushengming/auxtools'//网站，不重要；尽量模拟github上的地址，例如我这样的；当然你有地址最好了
+}
+
+ext {
+    bintrayRepo = 'tools'
+    bintrayName = 'auxtools'
+
+    publishedGroupId = 'com.ericcode.tools'
+    libraryName = 'auxtools'
+    artifact = 'auxtools'
+
+    libraryDescription = 'android tools'
+
+    siteUrl = 'https://github.com/zhoushengming/auxtools'
+    gitUrl = 'https://github.com/zhoushengming/auxtools.git'
+
+    libraryVersion = '1.0'
+
+    developerId = 'zhoushengming'
+    developerName = 'zhoushengming'
+    developerEmail = 'ericcode@foxmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
