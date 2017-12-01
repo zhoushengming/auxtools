@@ -1,8 +1,6 @@
 package com.ericcode.auxtools.constant;
 
 
-import android.support.annotation.IntDef;
-
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
@@ -37,7 +35,7 @@ public final class TimeConstants {
      */
     public static final int DAY = 86400000;
 
-    @IntDef({MSEC, SEC, MIN, HOUR, DAY})
+//    @IntDef({MSEC, SEC, MIN, HOUR, DAY})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Unit {
     }

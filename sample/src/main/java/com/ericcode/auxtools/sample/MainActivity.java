@@ -1,11 +1,11 @@
 package com.ericcode.auxtools.sample;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 
 import com.ericcode.auxtools.Logger;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
