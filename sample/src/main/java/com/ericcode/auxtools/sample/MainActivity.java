@@ -88,6 +88,7 @@ public class MainActivity extends Activity {
             throw new NullPointerException();
         } catch (NullPointerException e) {
             Logger.printException(e);
+            Logger.printException(TAG,e);
         }
     }
 }

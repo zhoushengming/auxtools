@@ -10,6 +10,7 @@ import java.util.Locale;
 public class Logger {
     private static final String TAG = Logger.class.getSimpleName();
     private static final String space = "----------------------------------------------------------------------------------------------------";
+    private static int tagLength = 28;
     private static boolean enable = true;
     private static String preTag = "^_^";
     private static boolean LOG_V = true;
@@ -22,8 +23,12 @@ public class Logger {
         V, D, I, W, E
     }
 
-    private Logger(){
+    private Logger() {
         throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
+    public static void setTagLength(int tagLength) {
+        Logger.tagLength = tagLength;
     }
 
     public static void setPreTag(String preTag) {
@@ -55,7 +60,7 @@ public class Logger {
     public static void v(String tag, String format, Object... args) {
         if (enable && LOG_V) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.v(tag, message);
         }
@@ -64,7 +69,7 @@ public class Logger {
     public static void v(Throwable throwable, String tag, String format, Object... args) {
         if (enable && LOG_V) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.v(tag, message, throwable);
         }
@@ -73,7 +78,7 @@ public class Logger {
     public static void d(String tag, String format, Object... args) {
         if (enable && LOG_D) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.d(tag, message);
         }
@@ -82,7 +87,7 @@ public class Logger {
     public static void d(Throwable throwable, String tag, String format, Object... args) {
         if (enable && LOG_D) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.d(tag, message, throwable);
         }
@@ -91,7 +96,7 @@ public class Logger {
     public static void i(String tag, String format, Object... args) {
         if (enable && LOG_I) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.i(tag, message);
         }
@@ -100,7 +105,7 @@ public class Logger {
     public static void i(Throwable throwable, String tag, String format, Object... args) {
         if (enable && LOG_I) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.i(tag, message, throwable);
         }
@@ -109,7 +114,7 @@ public class Logger {
     public static void w(String tag, String format, Object... args) {
         if (enable && LOG_W) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.w(tag, message);
         }
@@ -118,7 +123,7 @@ public class Logger {
     public static void w(Throwable throwable, String tag, String format, Object... args) {
         if (enable && LOG_W) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.w(tag, message, throwable);
         }
@@ -127,7 +132,7 @@ public class Logger {
     public static void e(String tag, String format, Object... args) {
         if (enable && LOG_E) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.e(tag, message);
         }
@@ -136,7 +141,7 @@ public class Logger {
     public static void e(Throwable throwable, String tag, String format, Object... args) {
         if (enable && LOG_E) {
             String message = buildMessage(format, args);
-            tag = formatLength(preTag + tag, 28);
+            tag = formatLength(preTag + tag, tagLength);
 
             Log.e(tag, message, throwable);
         }
@@ -149,7 +154,7 @@ public class Logger {
      */
     public static void printException(Throwable throwable) {
         if (enable) {
-            Log.e(TAG, "", throwable);
+            Log.e(formatLength(preTag + TAG, tagLength), buildMessage("", new Object[]{}), throwable);
         }
     }
 
@@ -158,7 +163,7 @@ public class Logger {
      */
     public static void printException(String tag, Throwable throwable) {
         if (enable) {
-            Log.e(tag, "", throwable);
+            Log.e(formatLength(preTag + tag, tagLength), buildMessage("", new Object[]{}), throwable);
         }
     }
 
